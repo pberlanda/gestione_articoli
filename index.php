@@ -6,6 +6,7 @@ require 'db.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gestione articoli</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Gestione articoli</h1>
@@ -18,7 +19,6 @@ require 'db.php';
         <tr>
             <th>codice</th>
             <th>descrizione</th>
-            <th></th>
         </tr>
 
         <?php 
@@ -38,7 +38,6 @@ require 'db.php';
             echo '<tr>';
             echo "<td>" . $articolo['CODICE'] . "</td>";
             echo "<td>" . $articolo['DESCRIZIONE'] . "</td>";
-            echo "<td></td>";
             echo '</tr>';
         }
 
