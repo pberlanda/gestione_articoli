@@ -1,0 +1,9 @@
+web app CRUD per la gestione di articoli
+
+l'app ha una dashboard generale in cui si vede l'elenco degli articoli.
+Un apposito link permette di accedeere all'area riservata con login.
+E' possibile registrarsi.
+
+Nell'area riservata c'è un menu con pulsante per creare nuovi articoli e uscire
+
+viene visualizzato l'elenco degli articoli, con la possibilità di modificarli e eliminarli
