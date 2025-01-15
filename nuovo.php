@@ -14,19 +14,39 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $codice = $_POST['codice'];
     $descrizione = $_POST['descrizione'];
 
-    // verifica se gia esistente da implementare per poco tempo
-
-    $sql = "INSERT INTO articoli (CODICE, DESCRIZIONE) VALUES (?, ?)";
-
+    // verifica se il codce e' gia' stato utilizzato
+    $sql = "SELECT * FROM articoli WHERE CODICE = ?";
+    
     $stmt = $conn->prepare($sql);
-
-    $stmt->bind_param('ss', $codice, $descrizione);
+    
+    $stmt->bind_param('s',$codice); // s str, i int, d dbl, b blb bin
 
     if(!$stmt->execute()){
-        echo 'Errore ' . $stmt->error;
+        $message = "<span class='error'>Errore " . $stmt->error . "</span><br>";
     }
 
-    echo 'Articolo ' . $codice . ' ' . $descrizione . ' creato!';
+    $result = $stmt->get_result();
+
+    $trovato = ($result->num_rows) ? true : false;
+
+    if($trovato){
+        $message = "<span class='warning'>Codice " . $codice . " gia' utilizzato</span><br>";
+    } else {
+
+        $sql = "INSERT INTO articoli (CODICE, DESCRIZIONE) VALUES (?, ?)";
+
+        $stmt = $conn->prepare($sql);
+    
+        $stmt->bind_param('ss', $codice, $descrizione);
+    
+        if(!$stmt->execute()){
+            $message = "<span class='error'>Errore " . $stmt->error . "</span><br>";
+        }
+    
+        //$message = 'Articolo ' . $codice . ' ' . $descrizione . ' creato!';
+        $message = "<span class='success'>Articolo " . $codice . " " . $descrizione . " creato!</span><br>";
+    
+    }
     
     $stmt->close();
     $conn->close();
@@ -39,6 +59,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gestione articoli area riservata nuovo</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Gestione articoli - Area riservata - Nuovo</h1>
@@ -51,6 +72,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         <input type="submit" value="Aggiungi">
 
     </form>
+
+    <?php if (!empty($message)) echo $message; ?>
 
     <a href="admin.php">Torna agli Articoli</a>
 

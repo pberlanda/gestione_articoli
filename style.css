@@ -1,3 +1,15 @@
+.error{
+    color:red;
+    font-weight: bold;
+}
+.warning{
+    color:orange;
+    font-weight: bold;
+}
+.success{
+    color: green;
+    font-weight: bold;
+}
 table{
     border-collapse: collapse;
 }
