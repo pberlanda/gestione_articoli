@@ -7,3 +7,7 @@ E' possibile registrarsi.
 Nell'area riservata c'è un menu con pulsante per creare nuovi articoli e uscire
 
 viene visualizzato l'elenco degli articoli, con la possibilità di modificarli e eliminarli
+
+
+
+login.css preso da qui https://chatgpt.com/share/682645ce-5944-800b-b506-934ce726d899

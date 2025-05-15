@@ -57,22 +57,25 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gestione articoli login</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-    <h1>Gestione articoli - Login</h1>
+    <div class="login-container">
 
-    <form class="container" method="POST">
-        <input type="text" name="username" placeholder="Inserisci username" required>
-        <input type="password" name="password" placeholder="Inserisci password"required>
+        <h1>Gestione articoli - Login</h1>
 
-        <input type="submit" value="Login">
+        <form class="container" method="POST">
+            <input type="text" name="username" placeholder="Inserisci username" required>
+            <input type="password" name="password" placeholder="Inserisci password"required>
 
-    </form>
+            <input type="submit" value="Login">
 
-    <h2>Nuovo utente? <a href="registrazione.php">Registrati</a></h2>
-    
-    <a href="index.php">Torna a home</a>
+        </form>
 
+        <h2>Nuovo utente? <a href="registrazione.php">Registrati</a></h2>
+        
+        <a href="index.php">Torna a home</a>
+
+    </div>
 </body>
 </html>
