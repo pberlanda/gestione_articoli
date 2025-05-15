@@ -28,7 +28,11 @@ body{
 }
 .login-container input[type=submit]{
     margin-top: 10px;
+    border:none;
+    cursor: pointer;
 }.login-container input[type=submit]:hover{
+    /* font-weight: bold;  NON MI PIACE */
+    color:rgb(47, 117, 246);
     background-color: #ccccccdc;
 }
 /* .login-container a{
