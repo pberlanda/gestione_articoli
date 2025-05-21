@@ -6,47 +6,50 @@ require 'db.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gestione articoli</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <h1>Gestione articoli</h1>
-    <br>
-    <ul>
-        <li><a href="admin.php">Area riservata</li>
-    </ul>
 
-    <table>
-        <tr>
-            <th>codice</th>
-            <th>descrizione</th>
-        </tr>
+    <div class="main-container">
+        <h1>Gestione articoli</h1>
+        <br>
+        <ul>
+            <li><a href="admin.php">Area riservata</li>
+        </ul>
 
-        <?php 
-        
-        $sql = "SELECT * FROM articoli WHERE 1 ORDER BY CODICE ASC";
+        <table>
+            <tr>
+                <th>codice</th>
+                <th>descrizione</th>
+            </tr>
 
-        $stmt = $conn->prepare($sql);
-        //$stmt->bind_param(); s string i int d double, b blob/binary
-        
-        if(!$stmt->execute()){
-            echo 'Errore ' . $stmt->error;
-        }
+            <?php 
+            
+            $sql = "SELECT * FROM articoli WHERE 1 ORDER BY CODICE ASC";
 
-        $result = $stmt->get_result();
+            $stmt = $conn->prepare($sql);
+            //$stmt->bind_param(); s string i int d double, b blob/binary
+            
+            if(!$stmt->execute()){
+                echo 'Errore ' . $stmt->error;
+            }
 
-        while($articolo = $result->fetch_assoc()){
-            echo '<tr>';
-            echo "<td>" . $articolo['CODICE'] . "</td>";
-            echo "<td>" . $articolo['DESCRIZIONE'] . "</td>";
-            echo '</tr>';
-        }
+            $result = $stmt->get_result();
 
-        $stmt->close();
-        $conn->close();
-        
-        ?>
+            while($articolo = $result->fetch_assoc()){
+                echo '<tr>';
+                echo "<td>" . $articolo['CODICE'] . "</td>";
+                echo "<td>" . $articolo['DESCRIZIONE'] . "</td>";
+                echo '</tr>';
+            }
 
-    </table>
+            $stmt->close();
+            $conn->close();
+            
+            ?>
+
+        </table>
+    </div>
 
 </body>
 </html>
